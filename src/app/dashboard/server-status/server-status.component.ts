@@ -5,22 +5,24 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './server-status.component.html',
-  styleUrl: './server-status.component.css'
+  styleUrl: './server-status.component.css',
 })
 export class ServerStatusComponent {
   currentStatus: 'online' | 'offline' | 'unknown' = 'offline';
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit() {
     setInterval(() => {
       const rnd = Math.random();
 
-      if(rnd < 0.5) {
+      if (rnd < 0.5) {
         this.currentStatus = 'online';
       } else if (rnd < 0.9) {
         this.currentStatus = 'offline';
       } else {
-        this.currentStatus = 'unknown'
+        this.currentStatus = 'unknown';
       }
-    }, 5000)
+    }, 5000);
   }
 }
